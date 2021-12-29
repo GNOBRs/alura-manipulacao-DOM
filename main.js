@@ -7,8 +7,9 @@ const criarTarefa = (evento) => {
 	const input = document.querySelector("[data-form-input]");
 	const valor = input.value;
 
-	if (valor != "") {
-		const textoError = document.querySelector("[data-invalid-input]");
+	const textoError = document.querySelector("[data-invalid-input]");
+
+	if (valor.trim() != "") {
 		textoError.classList.remove("invalido");
 
 		const lista = document.querySelector("[data-list]");
@@ -25,8 +26,9 @@ const criarTarefa = (evento) => {
 
 		input.value = null;
 	} else {
-		const textoError = document.querySelector("[data-invalid-input]");
 		textoError.classList.add("invalido");
+
+		input.value = null;
 
 		throw new Error("Favor definir valor no input");
 	}
